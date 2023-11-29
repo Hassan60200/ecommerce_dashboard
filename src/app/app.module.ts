@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,8 @@ import { ProductAdminComponent } from './admin/product-admin/product-admin.compo
 import { CategoryAdminComponent } from './admin/category-admin/category-admin.component';
 import { UserAdminComponent } from './admin/user-admin/user-admin.component';
 import { OrderAdminComponent } from './admin/order-admin/order-admin.component';
+import { HeaderComponent } from './header/header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { OrderAdminComponent } from './admin/order-admin/order-admin.component';
     ProductAdminComponent,
     CategoryAdminComponent,
     UserAdminComponent,
-    OrderAdminComponent
+    OrderAdminComponent,
+    HeaderComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
