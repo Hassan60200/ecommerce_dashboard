@@ -1,1 +1,9 @@
-<p>dasboard works!</p>
+<div *ngIf="chartsData">
+  <h2>Statistiques</h2>
+  <div class="row d-flex justify-content-around">
+    <div class="col-md-4 card p-3 bg-primary text-white"><span class="text-center">Nombre d'utilisateurs: {{ chartsData.stats.user }} </span></div>
+    <div class="col-md-4 card p-3 bg-success text-white"><span class="text-center">Nombre de produits: {{ chartsData.stats.product }}</span></div>
+    <div class="col-md-4 card p-3 bg-danger text-white"><span class="text-center">Nombre de commandes: {{ chartsData.stats.order }}</span></div>
+  </div>
+</div>
+

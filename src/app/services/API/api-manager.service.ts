@@ -14,4 +14,8 @@ export class ApiManagerService {
   productsIndex(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlAdmin}products`);
   }
+
+  chartsAdmin(): Observable<any[]>{
+    return this.http.get<any[]>(`${this.urlAdmin}`);
+  }
 }
