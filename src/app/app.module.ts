@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductNewComponent } from './product-new/product-new.component';
 import { CategoryNewComponent } from './category-new/category-new.component';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CategoryNewComponent } from './category-new/category-new.component';
     OrderAdminComponent,
     HeaderComponent,
     ProductNewComponent,
-    CategoryNewComponent
+    CategoryNewComponent,
+    CategoryEditComponent
   ],
   imports: [
     HttpClientModule,

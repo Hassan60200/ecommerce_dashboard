@@ -5,6 +5,7 @@ import {ProductAdminComponent} from "./admin/product-admin/product-admin.compone
 import {CategoryAdminComponent} from "./admin/category-admin/category-admin.component";
 import {ProductNewComponent} from "./product-new/product-new.component";
 import {CategoryNewComponent} from "./category-new/category-new.component";
+import {CategoryEditComponent} from "./category-edit/category-edit.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: 'category/new', component: CategoryNewComponent
+  },
+  {
+    path: 'category/edit/:id', component: CategoryEditComponent
   },
 ];
 
