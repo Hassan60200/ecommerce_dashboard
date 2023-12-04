@@ -1,1 +1,28 @@
-<p>product-admin works!</p>
+<div>
+  <a routerLink="/product/new" class="btn btn-success">Ajouter un nouveau produit</a>
+</div>
+<table class="table table-striped">
+  <thead class="text-center">
+  <tr>
+    <th scope="col">N°</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Prix €</th>
+    <th scope="col">Disponible</th>
+    <th scope="col">Best seller</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody class="text-center">
+  <tr *ngFor="let product of products | async">
+    <td>{{ product.id }}</td>
+    <td>{{ product.title }}</td>
+    <td>{{ product.price }} €</td>
+    <td>{{ product.isAvailaible }}</td>
+    <td>{{ product.isBest }}  </td>
+    <td colspan="2">
+      <button>Edit</button>
+      <button>Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
