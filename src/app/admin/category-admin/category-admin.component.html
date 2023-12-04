@@ -15,7 +15,7 @@
     <td>{{ category.name }}</td>
     <td colspan="2">
       <a routerLink="/category/edit/{{ category.id }}" class="btn btn-primary">Edit</a>
-      <button class="btn btn-danger">Supprimer</button>
+      <button (click)="onDelete(category.id)" class="btn btn-danger">Supprimer</button>
     </td>
   </tr>
   </tbody>
