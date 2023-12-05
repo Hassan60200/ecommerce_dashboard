@@ -24,8 +24,10 @@ export class CategoryEditComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-
-  }
+    this.api.getCategoryById(this.id).subscribe(data => {
+      this.category = data;
+    }, error => console.log(error));
+  };
 }
 
 
