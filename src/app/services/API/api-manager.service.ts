@@ -8,7 +8,8 @@ import {Observable} from "rxjs";
 export class ApiManagerService {
   urlAdmin: string = "http://localhost:8000/admin/"
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
 
   productsIndex(): Observable<any[]> {
@@ -16,13 +17,26 @@ export class ApiManagerService {
   }
 
   addProduct(ProductData: any): Observable<any> {
-    return this.http.post<any>(`${this.urlAdmin}product/new`, ProductData);
+    return this.http.post<any>(`${this.urlAdmin}products/new`, ProductData);
   }
-  chartsAdmin(): Observable<any[]>{
+
+  getProductById(idNumber: number): Observable<any> {
+    return this.http.get<any>(`${this.urlAdmin}products/${idNumber}`);
+  }
+
+  editProduct(categoryId: number, categoryData: any): Observable<any> {
+    return this.http.put<any>(`${this.urlAdmin}products/edit/${categoryId}`, categoryData);
+  }
+
+  deleteProduct(categoryId: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlAdmin}products/delete/${categoryId}`);
+  }
+
+  chartsAdmin(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlAdmin}`);
   }
 
-  categoriesIndex(): Observable<any[]>{
+  categoriesIndex(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlAdmin}categories`);
   }
 
@@ -33,11 +47,12 @@ export class ApiManagerService {
   getCategoryById(idNumber: number): Observable<any> {
     return this.http.get<any>(`${this.urlAdmin}categories/${idNumber}`);
   }
+
   editCategory(categoryId: number, categoryData: any): Observable<any> {
     return this.http.put<any>(`${this.urlAdmin}categories/edit/${categoryId}`, categoryData);
   }
 
-  deleteCategory(categoryId: number): Observable<any>{
+  deleteCategory(categoryId: number): Observable<any> {
     return this.http.delete<any>(`${this.urlAdmin}categories/delete/${categoryId}`);
   }
 }

@@ -5,7 +5,7 @@
       <div class="row my-3">
         <div class="form-group col-md-6">
           <label for="name">Nom du produit</label>
-          <input type="text" id="name" [(ngModel)]="name" name="name" class="form-control">
+          <input type="text" id="name" [(ngModel)]="title" name="title" class="form-control">
         </div>
         <div class="form-group col-md-6">
           <label for="price">Prix €</label>
@@ -23,11 +23,11 @@
         </div>
       </div>
       <div class="row my-3">
-<!--        <div class="form-select col-md-12">-->
-<!--          <select id="category" class="form-control">-->
-<!--            <option value="">test</option>-->
-<!--          </select>-->
-<!--        </div>-->
+        <div class="form-select col-md-12">
+          <select id="category" class="form-control">
+<!--            <option *ngFor="let category of listCategories" value="{{category.id}}">{{category.name}}}</option>-->
+          </select>
+        </div>
         <div class="col-md-12">
           <label for="description">Description</label>
           <textarea class="form-control" [(ngModel)]="description"  name="description" id="description">
