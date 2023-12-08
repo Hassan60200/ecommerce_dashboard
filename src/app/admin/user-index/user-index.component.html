@@ -1,1 +1,28 @@
-<p>user-index works!</p>
+<div>
+  <a routerLink="/category/new" class="btn btn-success">Ajouter un nouvel utilisateur</a>
+</div>
+<table class="table table-striped">
+  <thead class="text-center">
+  <tr>
+    <th scope="col">N°</th>
+    <th scope="col">Prénom</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Email</th>
+    <th scope="col">Rôles</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody class="text-center">
+  <tr *ngFor="let user of users">
+    <td>{{ user.id }}</td>
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.roles }}</td>
+    <td colspan="2">
+      <a routerLink="/user/edit/{{ user.id }}" class="btn btn-primary">Edit</a>
+      <button (click)="onDelete(user.id)" class="btn btn-danger">Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

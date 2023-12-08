@@ -55,4 +55,13 @@ export class ApiManagerService {
   deleteCategory(categoryId: number): Observable<any> {
     return this.http.delete<any>(`${this.urlAdmin}categories/delete/${categoryId}`);
   }
+
+  userIndex(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlAdmin}users`);
+  }
+
+
+  deleteUser(categoryId: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlAdmin}users/delete/${categoryId}`);
+  }
 }
