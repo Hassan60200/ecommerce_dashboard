@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiManagerService} from "../services/API/api-manager.service";
+import {ApiManagerService} from "../../services/API/api-manager.service";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Category} from "../models/Category";
+import {Category} from "../../models/Category";
 import {Observable} from "rxjs";
 
 @Component({

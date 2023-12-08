@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiManagerService} from "../services/API/api-manager.service";
+import {ApiManagerService} from "../../services/API/api-manager.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Category} from "../models/Category";
+import {Category} from "../../models/Category";
 
 @Component({
   selector: 'app-category-edit',
