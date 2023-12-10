@@ -17,6 +17,7 @@ import { CategoryEditComponent } from './admin/category-edit/category-edit.compo
 import { UserIndexComponent } from './admin/user-index/user-index.component';
 import { UserNewComponent } from './admin/user-new/user-new.component';
 import { UserEditComponent } from './admin/user-edit/user-edit.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserEditComponent } from './admin/user-edit/user-edit.component';
     CategoryEditComponent,
     UserIndexComponent,
     UserNewComponent,
-    UserEditComponent
+    UserEditComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,

@@ -24,7 +24,7 @@ export class UserIndexComponent implements OnInit {
     if (isConfirmed) {
       this.api.deleteUser(id).subscribe(
         data => {
-          this.router.navigateByUrl('/users');
+          console.log(data)
         },
         error => {
           console.error('Error deleting category:', error);
