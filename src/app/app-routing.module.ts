@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {DasboardComponent} from "./admin/dasboard/dasboard.component";
 import {ProductAdminComponent} from "./admin/product-admin/product-admin.component";
 import {CategoryAdminComponent} from "./admin/category-admin/category-admin.component";
@@ -9,34 +9,38 @@ import {CategoryEditComponent} from "./admin/category-edit/category-edit.compone
 import {UserIndexComponent} from "./admin/user-index/user-index.component";
 import {UserNewComponent} from "./admin/user-new/user-new.component";
 import {UserEditComponent} from "./admin/user-edit/user-edit.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {
-    path: '', component: DasboardComponent
+    path: '', component: DasboardComponent, canActivate: []
   },
   {
-    path: 'products', component: ProductAdminComponent
+    path: 'products', component: ProductAdminComponent, canActivate: []
   },
   {
-    path: 'product/new', component: ProductNewComponent
+    path: 'product/new', component: ProductNewComponent, canActivate: []
   },
   {
-    path: 'categories', component: CategoryAdminComponent
+    path: 'categories', component: CategoryAdminComponent, canActivate: []
   },
   {
-    path: 'category/new', component: CategoryNewComponent
+    path: 'category/new', component: CategoryNewComponent, canActivate: []
   },
   {
-    path: 'category/edit/:id', component: CategoryEditComponent
+    path: 'category/edit/:id', component: CategoryEditComponent, canActivate: []
   },
   {
-    path: 'users', component: UserIndexComponent
+    path: 'users', component: UserIndexComponent, canActivate: []
   },
   {
-    path: 'user/new', component: UserNewComponent
+    path: 'user/new', component: UserNewComponent, canActivate: []
   },
   {
-    path: 'user/edit/:id', component: UserEditComponent
+    path: 'user/edit/:id', component: UserEditComponent, canActivate: []
+  },
+  {
+    path: 'login', component: LoginComponent
   },
 ];
 
@@ -44,4 +48,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
