@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   user: any = {}
   loginError: string = '';
 
-  constructor(private authService: AuthentificationService,private router: Router) {
+  constructor(private authService: AuthentificationService, private router: Router) {
   }
 
   ngOnInit() {
@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
   login() {
     const {email, password} = this.user;
     if (!email || !password) {
-      console.log(email, password)
       this.loginError = 'Veuillez fournir un email et un mot de passe.';
       return;
     }
     this.authService.login(email, password).subscribe((response: any) => {
+        this.authService.setToken(response.token);
         if (response.roles) {
           this.authService.setRoles(response.roles);
         }

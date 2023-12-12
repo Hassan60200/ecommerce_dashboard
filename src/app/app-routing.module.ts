@@ -10,34 +10,35 @@ import {UserIndexComponent} from "./admin/user-index/user-index.component";
 import {UserNewComponent} from "./admin/user-new/user-new.component";
 import {UserEditComponent} from "./admin/user-edit/user-edit.component";
 import {LoginComponent} from "./login/login.component";
+import {AuthGuard} from "./guards/auth-guard.guard";
 
 const routes: Routes = [
   {
-    path: '', component: DasboardComponent, canActivate: []
+    path: '', component: DasboardComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'products', component: ProductAdminComponent, canActivate: []
+    path: 'products', component: ProductAdminComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'product/new', component: ProductNewComponent, canActivate: []
+    path: 'product/new', component: ProductNewComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'categories', component: CategoryAdminComponent, canActivate: []
+    path: 'categories', component: CategoryAdminComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'category/new', component: CategoryNewComponent, canActivate: []
+    path: 'category/new', component: CategoryNewComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'category/edit/:id', component: CategoryEditComponent, canActivate: []
+    path: 'category/edit/:id', component: CategoryEditComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'users', component: UserIndexComponent, canActivate: []
+    path: 'users', component: UserIndexComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'user/new', component: UserNewComponent, canActivate: []
+    path: 'user/new', component: UserNewComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'user/edit/:id', component: UserEditComponent, canActivate: []
+    path: 'user/edit/:id', component: UserEditComponent, canActivate: [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent
