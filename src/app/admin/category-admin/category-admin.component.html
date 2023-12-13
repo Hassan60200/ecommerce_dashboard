@@ -1,1 +1,22 @@
-<p>category-admin works!</p>
+<div>
+  <a routerLink="/category/new" class="btn btn-success">Ajouter une nouvelle catégorie</a>
+</div>
+<table class="table table-striped">
+  <thead class="text-center">
+  <tr>
+    <th scope="col">N°</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody class="text-center">
+  <tr *ngFor="let category of categories | async">
+    <td>{{ category.id }}</td>
+    <td>{{ category.name }}</td>
+    <td colspan="2">
+      <a routerLink="/category/edit/{{ category.id }}" class="btn btn-primary">Edit</a>
+      <button (click)="onDelete(category.id)" class="btn btn-danger">Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
