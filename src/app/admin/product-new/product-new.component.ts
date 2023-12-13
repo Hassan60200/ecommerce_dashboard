@@ -13,31 +13,37 @@ import {Observable} from "rxjs";
 export class ProductNewComponent implements OnInit {
   title: string = '';
   price: number = 0;
+  weight: number = 0;
   availaible: boolean = false;
   best: boolean = false;
   category: Category = new Category();
   description: string = '';
+  listCategories: Observable<any[]> | undefined;
 
   constructor(private api: ApiManagerService, private http: HttpClient, private router: Router) {
   }
 
   ngOnInit() {
-    console.log(this.api.categoriesIndex())
+    this.getCategoryList()
   }
 
   onSubmit() {
     const formData = {
       title: this.title,
       price: this.price,
-      availaible: this.availaible,
-      best: this.best,
-      category: this.category,
+      isAvailaible: this.availaible,
+      isBest: this.best,
+      category: "/admin/categories/"+this.category,
       description: this.description,
+      weight: this.weight
     };
-    console.log(this.category)
     this.api.addProduct(formData).subscribe((response) => {
       this.router.navigate(['/products']);
     },)
+  }
+
+  getCategoryList() {
+    this.listCategories = this.api.categoriesIndex()
   }
 
 }
