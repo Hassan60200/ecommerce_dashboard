@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('token')){
       this.token = true
-      console.log(this.token)
     }
   }
 
@@ -23,6 +22,7 @@ export class HeaderComponent implements OnInit {
     const token = localStorage.getItem('token')
     if (token) {
       localStorage.removeItem('token');
+      localStorage.removeItem('userRoles');
       this.route.navigateByUrl('/login')
     }
 

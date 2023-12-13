@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.authService.login(email, password).subscribe((response: any) => {
-        this.authService.setToken(response.token);
         if (response.roles) {
           this.authService.setRoles(response.roles);
+          this.authService.setToken(response.token);
         }
         if (this.authService.hasRole('ROLE_ADMIN')) {
           this.router.navigate(['/']);

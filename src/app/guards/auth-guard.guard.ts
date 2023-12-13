@@ -17,22 +17,17 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthentificationService,
     private router: Router
-  ) {}
+  ) {
+  }
+
   canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const rolesExpected = next.data['roles'] as string[];
-
-    if (rolesExpected && rolesExpected.length > 0) {
-      const userRoles = this.authService.getRoles();
-      const hasRequiredRoles = rolesExpected.every(role => userRoles.includes(role));
-
-      if (!hasRequiredRoles) {
-        this.router.navigate(['/login']);
-        return false;
-      }
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
+    if (this.authService.getToken() && this.authService.getRoles().includes('ROLE_ADMIN')){
+      return true
+    }else{
+      this.router.navigateByUrl('/login')
+      return false
     }
-
-    return true;
   }
 }
