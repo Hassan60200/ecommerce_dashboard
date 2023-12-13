@@ -23,7 +23,6 @@ export class CategoryAdminComponent implements OnInit {
     if (isConfirmed) {
       this.api.deleteCategory(id).subscribe(
         data => {
-          console.log(data);
           this.router.navigateByUrl('/categories');
         },
         error => {
