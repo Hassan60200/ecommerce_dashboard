@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class CategoryNewComponent implements OnInit {
   formData!: FormGroup
+  isSubmitted: boolean = false
 
   constructor(private api: ApiManagerService, private router: Router, private formBuilder: FormBuilder) {
   }
@@ -23,6 +24,7 @@ export class CategoryNewComponent implements OnInit {
 
   addNewCategory() {
     if (this.formData.valid) {
+      this.isSubmitted = true;
       this.api.addCategory(this.formData.value).subscribe(
         (response) => {
           this.router.navigateByUrl('/categories');
