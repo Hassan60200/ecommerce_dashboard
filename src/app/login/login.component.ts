@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
         }
         if (this.authService.hasRole('ROLE_ADMIN')) {
           this.router.navigate(['/']);
+        }else{
+          this.loginError = 'Vous n\'êtes autorisé à accéder à ce site.';
         }
       },
       (error) => {

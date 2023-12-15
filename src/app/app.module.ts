@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { UserIndexComponent } from './admin/user-index/user-index.component';
 import { UserNewComponent } from './admin/user-new/user-new.component';
 import { UserEditComponent } from './admin/user-edit/user-edit.component';
 import { LoginComponent } from './login/login.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +34,16 @@ import { LoginComponent } from './login/login.component';
     UserIndexComponent,
     UserNewComponent,
     UserEditComponent,
-    LoginComponent
+    LoginComponent,
+    TestComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

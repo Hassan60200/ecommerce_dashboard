@@ -11,10 +11,11 @@ import {UserNewComponent} from "./admin/user-new/user-new.component";
 import {UserEditComponent} from "./admin/user-edit/user-edit.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./guards/auth-guard.guard";
+import {TestComponent} from "./test/test.component";
 
 const routes: Routes = [
   {
-    path: '', component: DasboardComponent, canActivate: [AuthGuard]
+    path: '', component: DasboardComponent
   },
   {
     path: 'products', component: ProductAdminComponent, canActivate: [AuthGuard]

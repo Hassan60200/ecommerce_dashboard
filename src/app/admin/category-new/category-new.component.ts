@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiManagerService} from "../../services/API/api-manager.service";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-category-new',
@@ -8,30 +9,28 @@ import {Router} from "@angular/router";
   styleUrls: ['./category-new.component.css']
 })
 export class CategoryNewComponent implements OnInit {
-  newCategoryName: string = '';
-  newCategoryDescription: string = '';
+  formData!: FormGroup
 
-  constructor(private api: ApiManagerService, private router: Router) {
+  constructor(private api: ApiManagerService, private router: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.formData = this.formBuilder.group({
+      name: [null, [Validators.required]],
+      description: [null, [Validators.required]]
+    })
   }
 
   addNewCategory() {
-    const newCategoryData = {
-      name: this.newCategoryName,
-      description: this.newCategoryDescription,
+    if (this.formData.valid) {
+      this.api.addCategory(this.formData.value).subscribe(
+        (response) => {
+          this.router.navigateByUrl('/categories');
+        },
+        (error) => {
+          console.error('Erreur lors de l\'ajout de la catégorie :', error);
+        }
+      );
     }
-
-    this.api.addCategory(newCategoryData).subscribe(
-      (response) => {
-        this.router.navigate(['/categories']);
-      },
-      (error) => {
-        console.error('Erreur lors de l\'ajout de la catégorie :', error);
-      }
-    );
-
   };
 }
