@@ -11,12 +11,8 @@ export class AuthentificationService {
 
   urlAdmin: string = "http://localhost:8000/"
 
-  login(email: string, password: string) {
-    const loginData = {
-      email: email,
-      password: password
-    };
-    return this.http.post(`${this.urlAdmin}login`, loginData);
+  login(formData: object) {
+    return this.http.post(`${this.urlAdmin}login`, formData);
   }
 
   setRoles(roles: string[]): void {
