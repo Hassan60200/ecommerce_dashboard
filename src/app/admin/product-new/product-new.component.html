@@ -2,42 +2,68 @@
   <h2 class="text-center">Ajouter un nouveau produit</h2>
 
   <div class="card my-5 p-5">
-    <form action="" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()">
       <div class="row my-3">
         <div class="form-group col-md-4">
           <label for="name">Nom du produit</label>
-          <input type="text" id="name" [(ngModel)]="title" name="title" class="form-control">
+          <input type="text" id="name" formControlName="title" name="title" class="form-control">
+          <div *ngIf="!isSubmitted && formData.controls['title'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
         </div>
         <div class="form-group col-md-4">
           <label for="price">Prix €</label>
-          <input type="number" id="price" [(ngModel)]="price" name="price" class="form-control">
+          <input type="number" id="price" formControlName="price" name="price" class="form-control">
+          <div *ngIf="!isSubmitted && formData.controls['price'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
+
         </div>
         <div class="form-group col-md-4">
           <label for="price">Poids (kg)</label>
-          <input type="number" id="weight" [(ngModel)]="weight" name="weight" class="form-control">
+          <input type="number" id="weight" formControlName="weight" name="weight" class="form-control">
+          <div *ngIf="!isSubmitted && formData.controls['weight'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
+
         </div>
       </div>
       <div class="row my-3">
         <div class="col-md-6">
           <label for="availaible" class="form-check-label">Disponibilité</label>
-          <input type="checkbox" class="form-check-input" [(ngModel)]="availaible" name="availaible" id="availaible">
+          <input type="checkbox" class="form-check-input" formControlName="isAvailaible" name="availaible"
+                 id="availaible">
+          <div *ngIf="!isSubmitted && formData.controls['isAvailaible'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
+
         </div>
         <div class="col-md-6">
           <label for="best" class="form-check-label">Best seller</label>
-          <input type="checkbox" class="form-check-input" [(ngModel)]="best" name="best" id="best">
+          <input type="checkbox" class="form-check-input" formControlName="isBest" name="best" id="best">
+          <div *ngIf="!isSubmitted && formData.controls['isBest'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
+
         </div>
       </div>
       <div class="row my-3">
         <div class="form-select col-md-12">
-          <select id="category" class="form-control" [(ngModel)]="category" name="category">
-            <option *ngFor="let category of listCategories | async" value="{{category.id}}">{{category.name}}</option>
+          <select id="category" class="form-control" formControlName="category" name="category">
+            <option *ngFor="let category of listCategories | async" value="/admin/categories/{{category.id}}">{{category.name}}</option>
           </select>
+          <div *ngIf="!isSubmitted && formData.controls['category'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
         </div>
         <div class="col-md-12">
           <label for="description">Description</label>
-          <textarea class="form-control" [(ngModel)]="description"  name="description" id="description">
+          <textarea class="form-control" formControlName="description" name="description" id="description">
 
         </textarea>
+          <div *ngIf="!isSubmitted && formData.controls['description'].errors?.['required']" class="error-message">Champs
+            obligatoire
+          </div>
         </div>
       </div>
       <div class="d-flex justify-content-end">

@@ -12,8 +12,9 @@ export class ApiManagerService {
   }
 
 
-  productsIndex(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.urlAdmin}products`);
+  productsIndex(page: number): Observable<any[]> {
+    const options = {params: {page: page.toString()}};
+    return this.http.get<any[]>(`${this.urlAdmin}products`, options);
   }
 
   addProduct(ProductData: any): Observable<any> {
@@ -60,8 +61,11 @@ export class ApiManagerService {
     return this.http.get<any[]>(`${this.urlAdmin}users`);
   }
 
-
   deleteUser(categoryId: number): Observable<any> {
     return this.http.delete<any>(`${this.urlAdmin}users/delete/${categoryId}`);
+  }
+
+  orderIndex(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlAdmin}orders`);
   }
 }

@@ -9,20 +9,22 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./dasboard.component.css']
 })
 export class DasboardComponent implements OnInit {
-  chartsData: any
-  chart: any = []
+  countUsers: number = 0
+  countOrders: number = 0
+  countProducts: number = 0
 
   constructor(private api: ApiManagerService) {
   }
 
   ngOnInit() {
-    this.api.chartsAdmin().subscribe(
-      (data: any) => {
-        this.chartsData = data;
-      },
-      error => {
-        console.error('Error fetching charts data:', error);
-      }
-    );
+    this.api.userIndex().subscribe(count =>{
+      this.countUsers = count.length
+    })
+    this.api.productsIndex(1).subscribe(count =>{
+      this.countProducts = count.length
+    })
+    this.api.orderIndex().subscribe(count =>{
+      this.countUsers = count.length
+    })
   }
 }
