@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiManagerService} from "../../services/API/api-manager.service";
-import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Category} from "../../models/Category";
 import {Observable} from "rxjs";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-product-new',
@@ -11,35 +10,33 @@ import {Observable} from "rxjs";
   styleUrls: ['./product-new.component.css']
 })
 export class ProductNewComponent implements OnInit {
-  title: string = '';
-  price: number = 0;
-  weight: number = 0;
-  availaible: boolean = false;
-  best: boolean = false;
-  category: Category = new Category();
-  description: string = '';
+  formData !: FormGroup
   listCategories: Observable<any[]> | undefined;
+  isSubmitted: boolean = false
 
-  constructor(private api: ApiManagerService, private http: HttpClient, private router: Router) {
+  constructor(private api: ApiManagerService, private formBuilder: FormBuilder, private router: Router) {
   }
 
   ngOnInit() {
-    this.getCategoryList()
+    this.getCategoryList();
+    this.formData = this.formBuilder.group({
+      title: [null, [Validators.required]],
+      price: [null, [Validators.required]],
+      weight: [null, [Validators.required]],
+      isAvailaible: [null, [Validators.required]],
+      isBest: [false, [Validators.required]],
+      category: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+    })
   }
 
   onSubmit() {
-    const formData = {
-      title: this.title,
-      price: this.price,
-      isAvailaible: this.availaible,
-      isBest: this.best,
-      category: "/admin/categories/"+this.category,
-      description: this.description,
-      weight: this.weight
-    };
-    this.api.addProduct(formData).subscribe((response) => {
-      this.router.navigate(['/products']);
-    },)
+    if (this.formData.valid) {
+      this.isSubmitted = true;
+      this.api.addProduct(this.formData.value).subscribe((response) => {
+        this.router.navigate(['/products']);
+      },)
+    }
   }
 
   getCategoryList() {

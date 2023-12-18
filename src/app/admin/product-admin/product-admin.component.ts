@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiManagerService} from "../../services/API/api-manager.service";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-admin',
@@ -10,12 +10,32 @@ import {Router} from "@angular/router";
 })
 export class ProductAdminComponent implements OnInit {
   products: Observable<any[]> | undefined;
-
-  constructor(private api: ApiManagerService, private router: Router) {
+  currentPage = 1;
+  constructor(private api: ApiManagerService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.products = this.api.productsIndex();
+    this.products = this.api.productsIndex(1);
+  }
+
+  onLoadMore(): void{
+    this.currentPage++;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: this.currentPage },
+      queryParamsHandling: 'merge'
+    });
+    this.products = this.api.productsIndex(2);
+  }
+
+  onLoadPrevious(): void{
+    this.currentPage--;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: this.currentPage },
+      queryParamsHandling: 'merge'
+    });
+    this.products = this.api.productsIndex(1);
   }
 
   onDelete(id: number) {

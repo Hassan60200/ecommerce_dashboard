@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private auth: AuthentificationService) {
   }
   ngOnInit() {
-   if (this.auth.getToken()){
+   if (this.auth.getToken() && this.auth.hasRole('ROLE_ADMIN')){
      this.token = true
    }
   }
