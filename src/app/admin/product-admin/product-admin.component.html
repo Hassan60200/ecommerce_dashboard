@@ -24,5 +24,9 @@
       <button (click)="onDelete(product.id)" class="btn btn-danger">Supprimer</button>
     </td>
   </tr>
+  <div class="d-flex justify-content-around">
+    <button (click)="onLoadPrevious()" class="btn btn-success">Page précédente</button>
+    <button (click)="onLoadMore()" class="btn btn-success">Page suivante</button>
+  </div>
   </tbody>
 </table>

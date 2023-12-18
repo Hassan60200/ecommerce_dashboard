@@ -15,7 +15,15 @@ export class ProductAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.api.productsIndex();
+    this.products = this.api.productsIndex(1);
+  }
+
+  onLoadMore(): void{
+    this.products = this.api.productsIndex(2);
+  }
+
+  onLoadPrevious(): void{
+    this.products = this.api.productsIndex(1);
   }
 
   onDelete(id: number) {

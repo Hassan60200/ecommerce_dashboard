@@ -20,7 +20,7 @@ export class DasboardComponent implements OnInit {
     this.api.userIndex().subscribe(count =>{
       this.countUsers = count.length
     })
-    this.api.productsIndex().subscribe(count =>{
+    this.api.productsIndex(1).subscribe(count =>{
       this.countProducts = count.length
     })
     this.api.orderIndex().subscribe(count =>{
